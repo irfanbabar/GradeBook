@@ -8,47 +8,80 @@ namespace GradeBook
 {
     class Program
     {
+
+        public static void displayTable(double gradePoint, string subjects, double percentageForEachSubjects, string grade)
+        {
+            Console.WriteLine("{0} \t\t {1}% \t\t {2} \t {3}", subjects, Math.Round(percentageForEachSubjects), grade, gradePoint);
+        }
+
         // ---------------- Grade system function -----------------
-        public static void getGrades(string[] subjects, double[] percentageForEachSubjects, double[] gradePoint) {
+        public static void getGrades(string[] subjects, double[] percentageForEachSubjects, double[] gradePoint)
+        {
+            string grade;
+            Console.WriteLine("Subject \t Percentage \t Grade \t GradePoint");
+
             for (int i = 0; i < subjects.Length; i++)
             {
                 if (subjects[i] != null)
                 {
-                    Console.WriteLine(subjects[i]+":-");
 
                     if (percentageForEachSubjects[i] >= 80 && percentageForEachSubjects[i] <= 100)
                     {
-                        Console.WriteLine(" Greade A");
                         gradePoint[i] = 4;
-                        Console.WriteLine(gradePoint[i]);
-                    
+                        grade = "A";
+                        displayTable(gradePoint[i], subjects[i], percentageForEachSubjects[i], grade);
+
+                        //Console.WriteLine(" Greade A \n");
+
+                        //Console.WriteLine("Grade Point: {0}", gradePoint[i]);
+                        //Console.WriteLine("Remarks: Excellent \n");
                     }
                     else if (percentageForEachSubjects[i] <= 80 && percentageForEachSubjects[i] >= 64)
                     {
-                        Console.WriteLine(" Greade B");
                         gradePoint[i] = 3;
-                        Console.WriteLine(gradePoint[i]);
-                    
+                        grade = "B";
+                        displayTable(gradePoint[i], subjects[i], percentageForEachSubjects[i], grade);
+
+                        //Console.WriteLine(" Greade B \n");
+
+                        //Console.WriteLine("Grade Point: {0}", gradePoint[i]);
+                        //Console.WriteLine("Remarks: Good \n");
                     }
                     else if (percentageForEachSubjects[i] <= 65 && percentageForEachSubjects[i] >= 49)
                     {
-                        Console.WriteLine(" Greade C");
                         gradePoint[i] = 2;
-                        Console.WriteLine(gradePoint[i]);
-                    
+                        grade = "C";
+                        displayTable(gradePoint[i], subjects[i], percentageForEachSubjects[i], grade);
+
+
+                        //Console.WriteLine(" Greade C \n");
+
+                        //Console.WriteLine("Grade Point: {0}", gradePoint[i]);
+                        //Console.WriteLine("Remarks: Satisfactory \n");
                     }
 
                     else if (percentageForEachSubjects[i] <= 50 && percentageForEachSubjects[i] > 39)
                     {
-                        Console.WriteLine(" Greade D");
                         gradePoint[i] = 1;
-                        Console.WriteLine(gradePoint[i]);
-                    
+                        grade = "D";
+                        displayTable(gradePoint[i], subjects[i], percentageForEachSubjects[i], grade);
+
+                        //Console.WriteLine(" Greade D \n");
+
+                        //Console.WriteLine("Grade Point: {0}", gradePoint[i]);
+                        //Console.WriteLine("Remarks: Pass \n");
+
                     }
                     else if (percentageForEachSubjects[i] < 40)
                     {
-                        Console.WriteLine(" Greade F");
-                        gradePoint[i] = 0;                    
+                        gradePoint[i] = 0;
+                        grade = "F";
+                        displayTable(gradePoint[i], subjects[i], percentageForEachSubjects[i], grade);
+
+                        //Console.WriteLine(" Greade F \n");
+                        // Console.WriteLine("Grade Point: {0}", gradePoint[i]);
+
+                        //Console.WriteLine("Remarks: Fail \n");
                     }
 
                 }
@@ -59,22 +92,41 @@ namespace GradeBook
 
         // ---------------- Get GPA function -----------------
 
-        public static void getGPA(double[] gradePoint) {
-            double totalGradePoint=0;
+        public static void getGPA(double[] gradePoint, string[] subjects)
+        {
+            double totalGradePoint = 0;   // GPA
             for (int i = 0; i < gradePoint.Length; i++)
             {
+                Console.WriteLine(gradePoint[i]);
                 totalGradePoint += gradePoint[i];
+
             }
-            Console.WriteLine("GPA: {0}", totalGradePoint);
+
+            if (subjects.Length > 1)
+            {
+                totalGradePoint = totalGradePoint / 4;
+            }
+
+            Console.WriteLine("OverAll GPA: {0}", totalGradePoint);
+
+            if (totalGradePoint == 4)
+            {
+                Console.WriteLine("Remarks: \t Excellent");
+            }
         }
+
+
+
+
+
 
         // ----------------- end here --------------------
 
 
         static void Main(string[] args)
         {
-            Console.WriteLine("**************************************************Electronic Grade Book*************************************************");
-            Console.WriteLine("Subjects:");
+            Console.WriteLine("********Electronic Grade Book********");
+
 
             string[] subjects = new string[10];
             double[] assignment = new double[10];
@@ -88,24 +140,90 @@ namespace GradeBook
 
             for (int i = 0; i < subjects.Length; i++)
             {
-                Console.WriteLine("continue 1, exit 2");
+                Console.WriteLine("To Continue Press 1: \nTo Exit Press 2:");
+
                 string s = Console.ReadLine();
                 if (s == "1")
                 {
+
                     Console.WriteLine("Enter subject Code:");
                     subjects[i] = Console.ReadLine();
 
-                    Console.WriteLine("Assignment Marks out of 30:");
+                    Console.WriteLine("Assignment Marks out of 30: \n");
+
+
                     assignment[i] = Convert.ToDouble(Console.ReadLine());
 
-                    Console.WriteLine("Quiz Marks out of 30:");
+
+                    if (assignment[i] <= 30)
+                    {
+                        Console.WriteLine(" ");
+
+                    }
+                    else
+                    {
+
+                        Console.WriteLine("Invalid..");
+
+
+                    }
+
+
+                    Console.WriteLine("Quiz Marks out of 30: \n");
                     quiz[i] = Convert.ToDouble(Console.ReadLine());
 
-                    Console.WriteLine("Mid Marks out of 30:");
-                    mid[i] = Convert.ToDouble(Console.ReadLine());
+                    if (quiz[i] <= 30)
+                    {
+                        Console.WriteLine(" ");
 
-                    Console.WriteLine("Final Marks out of 30:");
+                    }
+                    else
+                    {
+
+                        Console.WriteLine("Invalid..");
+
+
+                    }
+
+
+
+
+
+                    Console.WriteLine("Mid Marks out of 30: \n");
+                    mid[i] = Convert.ToDouble(Console.ReadLine());
+                    if (mid[i] <= 30)
+                    {
+                        Console.WriteLine(" ");
+
+                    }
+                    else
+                    {
+
+                        Console.WriteLine("Invalid..");
+
+
+                    }
+
+
+
+                    Console.WriteLine("Final Marks out of 30: \n");
                     final[i] = Convert.ToDouble(Console.ReadLine());
+
+                    if (final[i] <= 30)
+                    {
+                        Console.WriteLine(" ");
+
+                    }
+                    else
+                    {
+
+                        Console.WriteLine("Invalid..");
+
+
+                    }
+
+
+
 
                     Console.WriteLine("Total Marks:");
                     totalMarks[i] = assignment[i] + quiz[i] + mid[i] + final[i];
@@ -113,8 +231,15 @@ namespace GradeBook
                     percentageForEachSubjects[i] = (totalMarks[i] / 120) * 100;
                     Console.WriteLine("Subject: {0}, Percentage: {1}", subjects[i], percentageForEachSubjects[i]);
 
+
+
+
+
+
+
                 }
-                else {
+                else
+                {
                     break;
                 }
 
@@ -122,7 +247,7 @@ namespace GradeBook
 
             getGrades(subjects, percentageForEachSubjects, gradePoint);
 
-            getGPA(gradePoint);
+            getGPA(gradePoint, subjects);
             Console.Read();
 
         }

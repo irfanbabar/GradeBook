@@ -4,3 +4,9 @@ C:\Users\Lappo\Documents\Visual Studio 2013\Projects\GradeBook\GradeBook\bin\Deb
 C:\Users\Lappo\Documents\Visual Studio 2013\Projects\GradeBook\GradeBook\obj\Debug\GradeBook.csprojResolveAssemblyReference.cache
 C:\Users\Lappo\Documents\Visual Studio 2013\Projects\GradeBook\GradeBook\obj\Debug\GradeBook.exe
 C:\Users\Lappo\Documents\Visual Studio 2013\Projects\GradeBook\GradeBook\obj\Debug\GradeBook.pdb
+C:\Users\Afnan-PC\Documents\Visual Studio 2015\Projects\GradeBook\GradeBook\bin\Debug\GradeBook.exe.config
+C:\Users\Afnan-PC\Documents\Visual Studio 2015\Projects\GradeBook\GradeBook\obj\Debug\GradeBook.exe
+C:\Users\Afnan-PC\Documents\Visual Studio 2015\Projects\GradeBook\GradeBook\obj\Debug\GradeBook.pdb
+C:\Users\Afnan-PC\Documents\Visual Studio 2015\Projects\GradeBook\GradeBook\bin\Debug\GradeBook.exe
+C:\Users\Afnan-PC\Documents\Visual Studio 2015\Projects\GradeBook\GradeBook\bin\Debug\GradeBook.pdb
+C:\Users\Afnan-PC\Documents\Visual Studio 2015\Projects\GradeBook\GradeBook\obj\Debug\GradeBook.csprojResolveAssemblyReference.cache
