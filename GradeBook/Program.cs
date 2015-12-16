@@ -95,17 +95,20 @@ namespace GradeBook
         public static void getGPA(double[] gradePoint, string[] subjects)
         {
             double totalGradePoint = 0;   // GPA
+            int number = 0;
+
             for (int i = 0; i < gradePoint.Length; i++)
             {
-                Console.WriteLine(gradePoint[i]);
-                totalGradePoint += gradePoint[i];
-
+                if (subjects[i] != null)
+                {
+                    totalGradePoint += gradePoint[i];
+                    number += 1;
+                }
+                
             }
 
-            if (subjects.Length > 1)
-            {
-                totalGradePoint = totalGradePoint / 4;
-            }
+
+             totalGradePoint = totalGradePoint / number;
 
             Console.WriteLine("OverAll GPA: {0}", totalGradePoint);
 
