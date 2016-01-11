@@ -8,11 +8,15 @@ namespace GradeBook
 {
     class Program
     {
-
+        #region  DisplayTable Function
         public static void displayTable(double gradePoint, string subjects, double percentageForEachSubjects, string grade)
         {
             Console.WriteLine("{0} \t\t {1}% \t\t {2} \t {3}", subjects, Math.Round(percentageForEachSubjects), grade, gradePoint);
         }
+        #endregion
+
+
+        #region  Grade System Function
 
         // ---------------- Grade system function -----------------
         public static void getGrades(string[] subjects, double[] percentageForEachSubjects, double[] gradePoint)
@@ -90,6 +94,11 @@ namespace GradeBook
         // ---------------- end here -----------------
 
 
+        #endregion
+
+
+        #region   Get GPA function
+
         // ---------------- Get GPA function -----------------
 
         public static void getGPA(double[] gradePoint, string[] subjects)
@@ -104,33 +113,51 @@ namespace GradeBook
                     totalGradePoint += gradePoint[i];
                     number += 1;
                 }
-                
+
             }
 
 
-             totalGradePoint = totalGradePoint / number;
+            totalGradePoint = totalGradePoint / number;
 
             Console.WriteLine("OverAll GPA: {0}", totalGradePoint);
 
-            if (totalGradePoint == 4)
+            if (totalGradePoint <= 4 && totalGradePoint >= 3)
             {
                 Console.WriteLine("Remarks: \t Excellent");
+
             }
+            if (totalGradePoint < 3 && totalGradePoint >= 2.5)
+            {
+                Console.WriteLine("Remarks: \t Good");
+            }
+            if (totalGradePoint < 2.5 && totalGradePoint >= 2)
+            {
+                Console.WriteLine("Remarks: \t Satisfactory");
+            }
+            if (totalGradePoint < 2 && totalGradePoint >= 1)
+            {
+                Console.WriteLine("Remarks: \t Pass");
+            }
+
+            if (totalGradePoint < 1)
+            {
+                Console.WriteLine("Remarks: \t Fail");
+            }
+
         }
 
+        // ----------------- end here -------------------
+
+        #endregion
 
 
-
-
-
-        // ----------------- end here --------------------
-
+        #region  Main function
 
         static void Main(string[] args)
         {
             Console.WriteLine("********Electronic Grade Book********");
 
-
+            string choose = "";
             string[] subjects = new string[10];
             double[] assignment = new double[10];
             double[] quiz = new double[10];
@@ -139,14 +166,17 @@ namespace GradeBook
             double[] totalMarks = new double[10];
             double[] percentageForEachSubjects = new double[10];
             double[] gradePoint = new double[10];
+            string[] arr = new string[5];
+
             //  this loop is for adding subjects in array
 
             for (int i = 0; i < subjects.Length; i++)
             {
                 Console.WriteLine("To Continue Press 1: \nTo Exit Press 2:");
 
-                string s = Console.ReadLine();
-                if (s == "1")
+                choose = Console.ReadLine();
+
+                if (choose == "1")
                 {
 
                     Console.WriteLine("Enter subject Code:");
@@ -228,31 +258,29 @@ namespace GradeBook
 
 
 
-                    Console.WriteLine("Total Marks:");
                     totalMarks[i] = assignment[i] + quiz[i] + mid[i] + final[i];
-                    Console.WriteLine(totalMarks[i]);
+                    Console.WriteLine("Total Marks: {0}", totalMarks[i]);
                     percentageForEachSubjects[i] = (totalMarks[i] / 120) * 100;
-                    Console.WriteLine("Subject: {0}, Percentage: {1}", subjects[i], percentageForEachSubjects[i]);
-
-
-
-
-
-
+                    Console.WriteLine("Subject: {0}\nPercentage: {1}\n", subjects[i], percentageForEachSubjects[i]);
 
                 }
                 else
                 {
+                    Console.WriteLine("\nExiting...\n");
                     break;
                 }
 
             }
 
-            getGrades(subjects, percentageForEachSubjects, gradePoint);
+            if (subjects[0] != null)
+            {
+                getGrades(subjects, percentageForEachSubjects, gradePoint);
 
-            getGPA(gradePoint, subjects);
+                getGPA(gradePoint, subjects);
+            }
             Console.Read();
 
         }
+        #endregion
     }
 }
